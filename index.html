@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tasty Treats - The Best Cookies in Town">
+    <title>Tasty Treats - Cookie Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f4ef;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background-color: #fff;
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Banner Section with Background Image */
+        .banner {
+            background-image: url("mammacookie.jpg");
+            background-size: cover;
+            background-position: center;
+            height: 170vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Darken overlay */
+            z-index: -1;
+        }
+
+        .banner h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        /* Menu Section */
+        .menu-item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .card {
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Call-to-Action */
+        .order-now {
+            text-align: center;
+            padding: 30px;
+            background-color: #e84a27;
+            color: white;
+        }
+
+        .order-now a {
+            background-color: white;
+            color: #e84a27;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .order-now a:hover {
+            background-color: #333;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Floating Action Button */
+        .order-fab {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background-color: #e84a27;
+            color: white;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .order-fab:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
+
+        /* Testimonials */
+        .blockquote {
+            background-color: #f9f4ef;
+            padding: 20px;
+            border-left: 5px solid #e84a27;
+            margin-bottom: 40px;
+        }
+
+        .rounded-circle {
+            border: 2px solid #e84a27;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Dark Mode */
+        .dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+
+        .dark-mode .navbar {
+            background-color: #333;
+        }
+
+        .dark-mode footer {
+            background-color: #222;
+        }
+
+        .dark-mode .card {
+            background-color: #444;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 2.5rem;
+            }
+        }
+        .navbar-logo{
+            height: 50px;
+            width: auto;
+        }
+        .nav-link{
+            font-weight: bolder;
+            font-size: large;
+        }
+
+        .text-center {
+            font-size:x-large;
+        }
+
+        h1{
+            font-size:xx-large;
+        }
+
+        /* Styling for Testimonial Section */
+.testimonial-item img {
+    width: 150px; /* Set a fixed width */
+    height: 150px; /* Set a fixed height */
+    object-fit: cover; /* Ensures the image scales without distorting */
+    border-radius: 50%; /* Makes the images circular */
+    border: 2px solid #e84a27; /* Optional: Adds a border for better appearance */
+    margin-bottom: 10px; /* Adds space between the image and the text */
+}
+
+.testimonial-item {
+    text-align: center;
+    margin-bottom: 30px; /* Adds spacing between testimonial items */
+}
+
+@media (max-width: 768px) {
+    .testimonial-item img {
+        width: 100px;
+        height: 100px;
+       };
+}
+.title {
+    font-size: x-large;
+}
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+           <a class="navbar-brand" href="#"><img src="cookie.jpg" alt="cookieLogo" class="navbar-logo"></a>
+            <a class="navbar-brand" href="#">Tasty Treats</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dark Mode Toggle -->
+    <div class="text-end p-3">
+        <button id="dark-mode-toggle" class="btn btn-light">Dark Mode</button>
+    </div>
+
+    <!-- Banner Section -->
+    <section class="banner">
+        <div>
+            <h1>Welcome to Tasty Treats</h1>
+            <p class="title">Freshly Baked Cookies Delivered to Your Doorstep</p>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="container py-5" data-aos="fade-up">
+        <h2 class="text-center mb-4">Our Menu</h2>
+        <div class="row">
+            <div class="col-md-4 menu-item">
+                <div class="card">
+                    <img src="chocchip.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Chocolate Chip Cookie</h5>
+                        <p class="card-text">A classic, packed with gooey chocolate chips.</p>
+                        <p><strong>£5.50 for 10 Cookies</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 menu-item">
+                <div class="card">
+                    <img src="oatmeal3.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Oatmeal Raisin Cookie</h5>
+                        <p class="card-text">Healthy and hearty with a hint of cinnamon.</p>
+                        <p><strong>£6 for 10 Cookies</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 menu-item">
+                <div class="card">
+                    <img src="sugar2.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Sugar Cookie</h5>
+                        <p class="card-text">Sweet and soft with a light crunch.</p>
+                        <p><strong>£5 for 10 Cookies</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="container py-5" data-aos="fade-up">
+        <h2 class="text-center mb-4">About Us</h2>
+
+
+            <p class="text-center">
+                At Tasty Treats, we believe in baking cookies with love and the freshest ingredients. Our bakery has been serving
+                delightful treats for over 10 years. Whether you're craving something sweet or want to surprise someone special, our
+                cookies are perfect for any occasion.
+            </p>
+        </section>
+    
+        <!-- Call-to-Action Section -->
+        <section class="order-now">
+            <h2>Ready to Order?</h2>
+            <p>Click below to start your cookie order</p>
+            <a href="#">Order Now</a>
+        </section>
+    
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="container py-5" data-aos="fade-up">
+            <h2 class="text-center mb-4">Customer Testimonials</h2>
+            <div class="row">
+                <div class="col-md-4 testimonial-item">
+                    <img src="pic3.jpg" alt="Testimonial 1">
+                    <blockquote class="blockquote">
+                        <p>"Best cookies I've ever had!"</p>
+                        <footer class="blockquote-footer">John Doe</footer>
+                    </blockquote>
+                </div>
+                <div class="col-md-4 testimonial-item">
+                    <img src="pic2.jpeg" alt="Testimonial 2">
+                    <blockquote class="blockquote">
+                        <p>"Highly recommend their service!"</p>
+                        <footer class="blockquote-footer">Jane Smith</footer>
+                    </blockquote>
+                </div>
+                <div class="col-md-4 testimonial-item">
+                    <img src="pic1.jpg" alt="Testimonial 3">
+                    <blockquote class="blockquote">
+                        <p>"I can't stop ordering their cookies!"</p>
+                        <footer class="blockquote-footer">Mike Johnson</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Contact Section -->
+        <section id="contact" class="container py-5" data-aos="fade-up">
+            <h2 class="text-center mb-4">Contact Us</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+    
+            <!-- Google Map Embed -->
+    <div class="mt-5">
+        <h3 class="text-center">Our Location</h3>
+        <div id="map" style="width: 100%; height: 400px;"></div>
+    </div>
+
+        </section>
+    
+        <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2024 Tasty Treats - All Rights Reserved</p>
+        </footer>
+    
+        <!-- Floating Action Button -->
+        <a href="#order" class="order-fab"><i class="fas fa-shopping-cart"></i> Order Now</a>
+    
+        <!-- Bootstrap JS and AOS JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXrAJnbyDN0U0TrSAj41gOJDFJNPlyEnw&callback=initMap" async defer></script>
+
+        <script>
+            AOS.init();
+    
+            // Dark Mode Toggle
+            const toggleButton = document.getElementById('dark-mode-toggle');
+            toggleButton.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                if (document.body.classList.contains('dark-mode')) {
+                    toggleButton.textContent = 'Light Mode';
+                } else {
+                    toggleButton.textContent = 'Dark Mode';
+                }
+            });
+
+            <!-- Google Maps JavaScript API -->
+
+    function initMap() {
+        var location = {lat: 53.496, lng: -2.518};  // Coordinates for 11 Buck Street, Leigh
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: location
+        });
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+    }
+
+        </script>
+    </body>
+  </html>
